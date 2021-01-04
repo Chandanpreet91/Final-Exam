@@ -1,11 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import WelcomePage from './components/WelcomePage'
 
-function App() {
-  return (
-    <div className="App">
-    </div>
-  );
+export class App extends Component {
+  render() {
+    return (
+      <div>
+        <WelcomePage />
+      </div>
+    )
+  }
 }
 
-export default App;
+export default App
