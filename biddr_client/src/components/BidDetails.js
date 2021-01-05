@@ -7,6 +7,7 @@ const BidDetails = (props) => {
   return(
     <div>
       <p>{body}</p>
+
     </div>
   )
 }

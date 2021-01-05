@@ -24,6 +24,8 @@ const Navbar = (props) => {
         :
         <span><NavLink to='/sign_in'>Sign In</NavLink></span>
       }
+      |
+      <span><NavLink to='/sign_up'>Sign Up</NavLink></span>
       </nav>
     )
 }

@@ -3,22 +3,19 @@ import AuctionDetails from './AuctionDetails';
 import BidList from './BidList';
 import { Auction } from '../requests';
 
-export class AuctionShowPage extends Component {
-  // `this` refers to an instance of QuestionShowPage
-  // to access props given to QuestionShowPage we use `this.props`
+class AuctionShowPage extends Component {
   constructor(props) {
-    // constructor recieves the props object
-    // if we want to use `this` within the constructor we must super(props).
-    // basically you super(props) in every class component
     super(props);
 
     this.state = {
-      auction: {}
+      auction: {},
+      value: {}
     }
      console.log(props.match.params.id);
-    // this.deleteAnswer = this.deleteAnswer.bind(this);
+     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
-
+  
   componentDidMount() {
     Auction.show(this.props.match.params.id)
       .then(auction => {
@@ -30,22 +27,40 @@ export class AuctionShowPage extends Component {
         })
       })
   }
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    const fd= new FormData(event.currentTarget);
+    const params = {
+      body: fd.get('body')
+    }
+    console.log(params);
+  }
+ 
+
   render() {
     return (
-      <main class='container'>
+      <main className='container'>
         {<AuctionDetails
           title={ this.state.auction.title }
           description={this.state.auction.description}
           current_price={this.state.auction.current_price}
         /> }
-        <form>
-        <input id='price' type='price' name='price' />
-        <input type='submit' value='Bid'></input>
-        </form>
+        <form onSubmit={this.handleSubmit} >
+        <label>
+          Bid:
+          <input type="text" name="body" onChange={this.handleChange} />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
         <h3>Previous Bids:</h3>
-        {/* { AnswerDetails({body: 'blue', author: { full_name: 'bugs bunny'}, created_at: new Date()})} */}
-        {/* Because AnswerDetails is just a function that returns a React Element you can render it out with the above syntax as well but this would be considered bad practice. */}
+        
+        <div className ="bids">
         <BidList bids={this.state.auction.bids} />
+        </div>
       </main>
     )
   }

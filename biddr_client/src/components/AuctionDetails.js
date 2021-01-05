@@ -2,10 +2,7 @@
 import React from 'react';
 
 const AuctionDetails = (props) => {
-  // props is the only argument to React Components
-  // it is a javascript object
-
-  // console.log(props);
+ 
    const title = props.title;
    const description = props.description;
    const current_price = props.current_price;

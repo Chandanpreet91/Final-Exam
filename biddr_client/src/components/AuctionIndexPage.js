@@ -10,7 +10,7 @@ export class AuctionIndexPage extends Component {
       auctions: []
     }
 
-     this.createAuction = this.createAuction.bind(this)
+    //  this.createAuction = this.createAuction.bind(this)
   }
   componentDidMount() {
     Auction.index()
@@ -22,23 +22,23 @@ export class AuctionIndexPage extends Component {
         })
       })
   }
-  createAuction(params){
-    this.setState((state) => {
-      return {
-        auctions: [
-          {
-            id: (Math.max(...state.auctions.map(q => q.id)) + 1), // get the largest id out of all the question ids then added 1 to it
-            ...params
-          },
-          ...state.auctions
-        ]
-      }
-    })
-  }
+  // createAuction(params){
+  //   this.setState((state) => {
+  //     return {
+  //       auctions: [
+  //         {
+  //           id: (Math.max(...state.auctions.map(q => q.id)) + 1), // get the largest id out of all the question ids then added 1 to it
+  //           ...params
+  //         },
+  //         ...state.auctions
+  //       ]
+  //     }
+  //   })
+  // }
 
     render() {
             return (
-                <main class='container'>
+                <main className='container'>
                   <h1>Auctions</h1>
                   <ul style={{ padding: 0, listStyle: 'none'}}>
                     {
@@ -46,7 +46,7 @@ export class AuctionIndexPage extends Component {
                         return(
                           <li key={auction.id}>
                             <a href='#'>{auction.title}</a>
-                            <p>posted on {auction.ends_at}</p>
+                            <p>posted on {auction.updated_at}</p>
                           </li>
                         )
                       })

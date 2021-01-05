@@ -14,7 +14,7 @@ const SignInPage = ({handleSubmit,history }) => {
         }
 
   return(
-    <div class = 'container'>
+    <div className = 'container'>
       <h1>Sign In</h1>
       <form onSubmit={ OnSubmit }>
         <div>

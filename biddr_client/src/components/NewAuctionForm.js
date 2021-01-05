@@ -10,9 +10,9 @@ const NewAuctionForm = (props) => {
     const formData = new FormData(event.currentTarget);
     const params = {
       title: formData.get('title'),
-      body: formData.get('body'),
+      description: formData.get('body'),
       ends_at: formData.get('ends_at'),
-      price: formData.get('price')
+      reserve_price: formData.get('reserve_price')
     };
     Auction.create(params);
 
@@ -21,7 +21,7 @@ const NewAuctionForm = (props) => {
   }
 
   return(
-      <main class='container'>
+      <main className='container'>
           <h2>Create an Auction</h2>
     <form className='auction-form' onSubmit={ handleSubmit }>
       <div>
@@ -40,9 +40,9 @@ const NewAuctionForm = (props) => {
         <input name='ends_at' id='ends_at' />
       </div>
       <div>
-        <label htmlFor='price'>Reserve Price</label>
+        <label htmlFor='reserve_price'>Reserve Price</label>
         <br />
-        <input name='price' id='price' />
+        <input name='reserve_price' id='reserve_price' />
       </div>
       <div>
         <input type='submit' value='Submit'/>
